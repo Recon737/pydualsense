@@ -154,11 +154,8 @@ class pydualsense:
         :type b: int, optional 
         :raises Exception: wrong color values
         """
-        if (g == None and b == None):
-            try:
-                r, g, b = map(int, r)
-            except TypeError as te:
-                raise TypeError('r, g, and b must be ints or r must be a tuple with length 3.') from te  
+        if (type(r) is tuple):
+            r, g, b = map(int, r)
         if (r > 255 or g > 255 or b > 255) or (r < 0 or g < 0 or b < 0):
             raise Exception('colors have values from 0 to 255 only')
         self.color = (r,g,b)
